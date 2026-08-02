@@ -1,62 +1,102 @@
-# SOC Analyst & Cybersecurity Portfolio
+# Cyber-Certs
 
-## 🚀 About This Repository  
-This repo highlights my journey into cybersecurity through structured coursework and hands-on SOC-analyst labs. It shows how I translate security theory into practice — building, detecting, and responding to security incidents.
+## 🚀 About This Repository
 
----
+This repo tracks my journey into cybersecurity — courses I've completed, hands-on SOC labs I've worked through, and the projects I'm building along the way. I'm currently in HSSC (ICS — Computer Science, Math, Statistics) in Rawalpindi, building toward SOC/cloud security, with a longer-term focus on OT/ICS (industrial control systems) security.
 
-## 📚 Courses & Certifications
-
-Here are the cybersecurity-focused courses I’ve completed:
-
-- **Cisco – Introduction to Cybersecurity**  
-  Built a strong foundation in cybersecurity concepts: threat actors, malware, and how Security Operations Centers (SOCs) work.
-
-- **Alison – Introduction to Cybersecurity**  
-  High-level overview of cyber risk, defense strategies, and the importance of security controls.
-
-- **Python Crash Course (Coursera)**  
-  Learned Python from scratch and now use it to write scripts for parsing logs, automating simple tasks, and supporting my SOC labs.
-
-- **(ISC)²: Certified in Cybersecurity (All Five Domains)**  
-  Covered core cybersecurity domains:  
-  1. Security Principles  
-  2. Business Continuity & Incident Response  
-  3. Access Control  
-  4. Network Security  
-  5. Security Operations :contentReference[oaicite:0]{index=0}  
- 
-- **SOC Fundamentals – Let’s Defend**  
-  Introduced me to how SOCs operate: alert types, monitoring logic, and response workflows.
-
-- **SOC Analyst Essentials (Udemy)**  
-  Focused on real SOC tasks: using SIEM, creating detection rules, investigating alerts, and responding to incidents.
+I'd rather this repo show **real, sometimes unfinished progress** than look polished and empty. If a section is thin right now, it's because I haven't gotten to it yet — not because I'm hiding something.
 
 ---
 
-## 🛠️ Projects & Labs
+## 🧭 Where I'm At
 
-These hands-on labs put my course learnings into action:
+Started seriously learning cybersecurity in 2025. So far I've worked through:
 
-### SOC Lab – Incident Detection & Response  
-- **Goal:** Simulate real-world security incidents like brute-force attacks, phishing, and malware.  
-- **Setup:** Virtual machines (Windows / Linux), log collection, SIEM tool for analysis.  
-- **Process:**  
-  1. Configure VMs & log forwarding  
-  2. Generate malicious activities / attacks  
-  3. Create dashboards and alert rules in SIEM  
-  4. Investigate alerts, contain threats, remediate  
-  5. Document everything in a structured **incident response runbook**  
-- **Result:**  
-  - Detection rules for different attack types  
-  - Dashboards that visualize attack progression  
-  - A playbook that simulates a real SOC response
+- **Cisco** — Junior Cybersecurity Analyst path
+- **ISC2** — Certified in Cybersecurity coursework
+- **HackTheBox / TryHackMe / LetsDefend** — SOC-focused hands-on labs
+- **Python** — Google's Crash Course (Coursera)
+- **AWS** — Currently studying Cloud Practitioner concepts, building hands-on projects on AWS Free Tier
 
-### Detection Rule Engineering  
-- **Goal:** Design and tune detection rules for suspicious behaviors.  
-- **Approach:**  
-  - Use SIEM query language (e.g., SPL)  
-  - Write alerts for failed logins, privilege escalation, lateral movement  
+Some of what's listed here is course completion rather than a paid, proctored certification — I try to be upfront about which is which rather than blur the line.
+
+---
+
+## 📚 Courses
+
+Study notes and completed coursework, organized by provider.
+
+```
+courses/
+├── cisco-notes/
+├── isc2-certified-in-cybersecurity/
+├── alison-intro-to-cybersecurity/
+└── udemy-soc-analyst-essentials/
+```
+
+This section is mostly proof I sat through the material — theory, terminology, foundational concepts.
+
+---
+
+## 🔬 SOC Labs
+
+Hands-on writeups from HackTheBox, TryHackMe, and LetsDefend. This is the part I care most about getting right.
+
+```
+soc-labs/
+├── htb/
+├── tryhackme/
+└── letsdefend/
+```
+
+Course completions show I studied something. These writeups are meant to show I can actually **think through a problem** — my process, what I checked first, what confused me, what I concluded. I'm filling this section gradually rather than rushing it; a handful of properly explained labs is worth more than twenty rushed ones.
+
+---
+
+## 🏭 OT/ICS Security
+
+Notes and labs on industrial control systems security — a newer area I'm building into alongside cloud, tied directly to my ICS coursework.
+
+```
+ot-ics/
+├── notes/
+├── labs/
+└── cloud-ot-crossover-project/
+```
+
+This section is early. Expect it to fill in over the coming months.
+
+---
+
+## 🧪 Homelab Project
+
+My end-to-end SIEM build — the larger project meant to tie SOC concepts, detection logic, and monitoring together in one place rather than isolated lab rooms.
+
+```
+homelab-project/
+├── README.md
+├── architecture-diagram.png
+├── detection-rules/
+└── screenshots/
+```
+
+---
+
+## 🎯 Why This Is Public
+
+Most of what I've learned so far has been self-funded and self-directed, which means a lot of it is course completions rather than certifications I haven't been able to afford yet. I'd rather be transparent about that than pad this repo to look more finished than it actually is. If something here looks incomplete, it probably genuinely is — this updates as I go, not all at once.
+
+---
+
+## 🤝 Get In Touch
+
+Working in SOC, cloud security, or OT/ICS? Want to compare notes or point out something I got wrong in a writeup? Genuinely welcome that.
+
+📌 [LinkedIn](https://www.linkedin.com/in/syed-mohsin-haider-naqvi-33248838b)
+
+---
+
+*Last updated: [fill in whenever you actually touch the repo]*  - Write alerts for failed logins, privilege escalation, lateral movement  
   - Test rules against both benign and malicious logs  
   - Adjust to reduce false positives  
 - **Outcome:**  
