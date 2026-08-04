@@ -1,0 +1,60 @@
+"""
+port_lookup.py
+
+practicing lists + dictionaries from module 4.
+simple lookup for common port numbers, using
+networking terms i already know from the cisco courses.
+
+not real scanning, just python practice. now lets you
+type in your own port number to check instead of only
+running through a hardcoded list
+"""
+
+# dictionary of common ports and what they're used for
+common_ports = {
+    21: "FTP",
+    22: "SSH",
+    23: "Telnet",
+    25: "SMTP",
+    53: "DNS",
+    80: "HTTP",
+    443: "HTTPS",
+    3389: "RDP",
+    3306: "MySQL",
+    8080: "HTTP Alt"
+}
+
+
+def lookup_port(port_number):
+    if port_number in common_ports:
+        return common_ports[port_number]
+    else:
+        return "Unknown"
+
+
+# test a few ports first
+print("--- test lookups ---")
+test_ports = [22, 80, 443, 9999]
+
+for port in test_ports:
+    service = lookup_port(port)
+    print("Port " + str(port) + ": " + service)
+
+# practicing list comprehension here, filtering for insecure ports
+insecure_ports = []
+for port in common_ports:
+    if common_ports[port] == "Telnet" or common_ports[port] == "FTP":
+        insecure_ports.append(port)
+
+print("\nInsecure/legacy ports in this list: " + str(insecure_ports))
+
+# now let the user check their own port
+print("\n--- try your own ---")
+user_input = input("Enter a port number to look up: ")
+port_number = int(user_input)
+service = lookup_port(port_number)
+
+if service == "Unknown":
+    print("Port " + str(port_number) + ": Unknown (not in my list)")
+else:
+    print("Port " + str(port_number) + ": " + service)
