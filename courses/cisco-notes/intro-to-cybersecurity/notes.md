@@ -1,76 +1,72 @@
 # Notes — Introduction to Cybersecurity (Cisco Networking Academy)
 
-Study notes from working through the course. Mix of definitions I wanted to keep straight and my own explanations where something took a bit to click.
+Notes from working through this course. Writing these mostly for myself so I actually remember the stuff later, not trying to make it sound impressive.
 
 ---
 
-## 🔐 The CIA Triad
+## CIA Triad
 
-The core framework almost everything else in security gets measured against.
+This is the thing basically every other security topic gets measured against, so worth actually understanding not just memorizing.
 
-- **Confidentiality** — only the people who are supposed to see data can see it. Broken by things like data breaches, weak access controls, unencrypted data.
-- **Integrity** — data hasn't been changed or tampered with, whether by accident or on purpose. Broken by things like unauthorized edits, man-in-the-middle attacks altering data in transit.
-- **Availability** — systems and data are accessible when needed. Broken by things like DDoS attacks, hardware failure, ransomware locking you out.
+- **Confidentiality** — only the right people can see the data
+- **Integrity** — data hasn't been changed by someone who shouldn't have touched it
+- **Availability** — the system/data is actually there when you need it
 
-**My own way of remembering it:** if an attacker *reads* something they shouldn't — confidentiality. If they *change* something — integrity. If they *block access* to something — availability. Most real attacks actually hit more than one of these at once.
-
----
-
-## ⚠️ Threats & Attacks
-
-**Malware** — general term for malicious software. Sub-types worth knowing separately:
-- Virus — attaches to a legitimate file/program, needs that program to run to spread
-- Worm — spreads on its own across a network, no host file needed
-- Trojan — disguised as something legitimate to trick you into running it
-- Ransomware — encrypts your files, demands payment to unlock
-
-**Social engineering** — manipulating people rather than exploiting technical systems. This is the one that stuck with me most — no matter how good the technical defenses are, humans are usually the easier target.
-- Phishing — fake emails/messages trying to get you to click something or hand over credentials
-- Pretexting — attacker invents a false scenario to get information out of someone
-- Baiting — leaving something enticing (like a USB drive) to get a victim to compromise their own system
-
-**DoS / DDoS** — Denial of Service / Distributed Denial of Service. Flooding a system with traffic so real users can't access it. "Distributed" means it's coming from many sources at once (usually a botnet), which makes it harder to block than a single source.
+The way I actually remember which is which: if someone *reads* something they shouldn't = confidentiality broken. If they *change* something = integrity broken. If they *block* access = availability broken. A lot of real attacks hit more than one of these at the same time, which is something the course didn't really explain but I figured out later doing labs — like ransomware hits availability obviously (you can't get your files) but also kind of touches integrity depending on how you look at it.
 
 ---
 
-## 🔑 Cryptography Basics
+## Threats/Attacks
 
-- **Encryption** — converting readable data (plaintext) into unreadable data (ciphertext) so only someone with the right key can read it
-- **Symmetric encryption** — same key used to encrypt and decrypt. Faster, but you have to securely share the key with the other party somehow
-- **Asymmetric encryption** — uses a public key (encrypt) and private key (decrypt) pair. Slower, but solves the key-sharing problem since the public key can be shared openly
-- **Hashing** — different from encryption. One-way — you can't reverse a hash back to the original data. Used to verify integrity (e.g. checking a downloaded file hasn't been tampered with) rather than to hide data
+**Malware types:**
+- Virus — needs a host file to spread, attaches to something legit
+- Worm — spreads on its own, no host needed
+- Trojan — pretends to be something legit
+- Ransomware — locks your files, wants money
 
-**Note to self:** encryption and hashing get mixed up a lot when talking casually about security — encryption is meant to be reversed (decrypted) by someone with the key, hashing isn't meant to be reversed at all.
+**Social engineering** — this is the one I actually think about the most. Doesn't matter how good the firewall is if someone just calls and asks nicely, or sends a fake email that looks real enough. Course covered:
+- Phishing (fake emails/messages)
+- Pretexting (making up a fake reason to get info out of someone)
+- Baiting (leaving a USB drive somewhere hoping someone plugs it in)
 
----
-
-## 🛡️ Network Security & Defense-in-Depth
-
-Defense-in-depth = don't rely on one single security measure. Layer multiple defenses so if one fails, others still catch the problem.
-
-Examples of layers:
-- Firewalls — control what traffic is allowed in/out of a network
-- Antivirus/endpoint protection — catches malware on individual devices
-- Access controls — limiting who can reach what, even inside the network
-- Monitoring/logging — so if something does get through, there's a record to investigate
-
-This connects directly to what SOC analysts actually do day to day — the monitoring/logging layer is where a lot of the actual detection work happens, which is why this course made more sense once I started the hands-on labs afterward.
+**DoS/DDoS** — flooding something with traffic so real users can't use it. DDoS = distributed, meaning it's coming from a bunch of different sources at once (botnet usually), which is why it's harder to just block one IP and be done with it.
 
 ---
 
-## 💼 Cybersecurity Career Paths (from the course)
+## Basic Crypto
 
-Rough breakdown the course gave of common roles:
-- **SOC Analyst** — monitors alerts, investigates incidents, first line of defense
-- **Penetration Tester** — authorized attacker, finds vulnerabilities before real attackers do
-- **Security Engineer** — builds and maintains security infrastructure/tools
-- **GRC (Governance, Risk, Compliance)** — policy, audits, regulatory compliance side rather than hands-on technical work
-- **Incident Responder** — handles active security incidents, containment and recovery
+- Encryption = turning readable data into unreadable data, need the right key to read it again
+- Symmetric = same key both ways, faster but you gotta share the key safely somehow first
+- Asymmetric = public key to encrypt, private key to decrypt, slower but solves the key sharing problem
+- Hashing = NOT the same as encryption, this one you can't reverse. used to check if a file got tampered with, not to hide it
 
-Useful mainly for getting the vocabulary straight — I already had a rough sense of these from research, but this laid it out more clearly.
+I mixed up hashing and encryption a few times before this clicked. Encryption you're supposed to be able to undo (with the key). Hashing you're not supposed to be able to undo at all, ever.
 
 ---
 
-## 🧠 Overall Takeaway
+## Network Security / Defense in Depth
 
-This course didn't teach anything technically difficult, but it gave me the shared vocabulary that made the hands-on labs afterward (HTB, LetsDefend) click faster — I wasn't stopping mid-lab to look up what a term meant. Worth doing early rather than skipping straight to hands-on work.
+Basically: don't rely on one single thing to keep you safe, stack multiple layers so if one fails something else catches it.
+
+- Firewalls
+- Antivirus/endpoint stuff
+- Access controls (who's allowed to touch what)
+- Logging/monitoring — this is the layer that actually connects to what SOC analysts do day to day, which I didn't really get until after I started the labs on HTB and LetsDefend and realized half of what I was doing there was literally just this
+
+---
+
+## Career Paths (from the course)
+
+- SOC Analyst — watches alerts, investigates stuff
+- Pentester — gets paid to break in before real attackers do
+- Security Engineer — builds/maintains the actual security tools and setup
+- GRC — more policy/audit/compliance side, less hands on technical
+- Incident Responder — handles stuff when it's already going wrong
+
+Honestly already knew roughly what these were from reading around online before this course, but having them actually laid out clearly helped.
+
+---
+
+## What I Actually Got Out Of This
+
+Nothing here was hard exactly, it's an intro course. But it gave me the vocabulary so when I jumped into HTB and LetsDefend labs after, I wasn't stopping every five minutes to google what a term meant. That part mattered more than I expected going in — I thought the course itself would feel kind of pointless since it's not hands on, but not having to look up basic terms mid-lab later on was worth it.
