@@ -1,54 +1,46 @@
-# Notes — Network Defense (Cisco Networking Academy)
+# Network Defense (NetDef) — Cisco Networking Academy
 
-Going through this one module by module like I did for Networking Basics — this course has 11 modules and is noticeably denser than the last one, so these notes took longer to put together properly.
+## About This Course
 
----
+This is the follow up to Networking Basics, and its a big step up honestly. Where Networking Basics was about how networks work, this one's about how they get attacked and defended — access control, firewalls, crypto, cloud security, and then finally actual security monitoring and alert evaluation, which is the closest this course gets to real SOC work.
 
-## Module 1 — Understanding Defense
+Went into this already having done the SOC labs on HTB and LetsDefend so some of the alert evaluation stuff in the later modules felt kinda familiar. but the earlier modules — ACLs, firewall tech, crypto in proper depth — filled in a lot of the "why" behind stuff i'd been doing somewhat mechanically in the hands on labs without fully getting the logic behind it.
 
-- **Defense-in-depth** — the layered security approach, revisited here in more depth than the Intro to Cybersecurity version. Not relying on any single control, so if one layer fails, others still catch the problem
-- **Cybersecurity operations management** — how security operations actually get run day to day, not just the technical controls but the management side of it
-- **Security policies, regulations, and standards** — the difference between an internal policy, an external regulation you have to comply with, and an industry standard you choose to follow
-
-This module is mostly framing for everything that follows — establishing why defense needs to be layered and governed by policy, not just a pile of individual tools.
+**Status:** Completed
 
 ---
 
-## Module 2 — System and Network Defense
+## What It Covered
 
-Biggest module in terms of breadth — covers defense from several different angles:
-
-- **Physical security** — the reminder that security isn't only digital; someone walking into a server room is still a security failure
-- **Application security** — securing the software layer itself, not just the network around it
-- **Network hardening: services and protocols** — turning off or securing unnecessary services, since anything running is a potential attack surface
-- **Network hardening: segmentation** — splitting networks into zones so a breach in one area doesn't automatically expose everything else
-- **Hardening wireless and mobile devices** — wireless-specific risks and how to reduce them
-- **Cybersecurity resilience** — the ability to keep functioning (or recover quickly) even when something does go wrong, rather than assuming prevention will always work
-- **Embedded and specialized systems** — devices that aren't standard computers (IoT, industrial systems) and why they need different defensive thinking. This section connects directly to the OT/ICS side of what I'm building toward separately
-
----
-
-## Module 3 — Access Control
-
-- **Access controls and access control concepts** — the general models for controlling who can do what
-- **Account management** — the practical side of actually managing accounts over their lifecycle, not just the theory of access control
-- **AAA (Authentication, Authorization, Accounting)** — three distinct things that get lumped together casually but are actually separate: proving who you are, deciding what you're allowed to do, and logging what you actually did
-
-**Checkpoint Exam: Principles, Practices, and Processes of Network Defense**
+- Defense in depth and security ops management — the layered approach, and how policies/regulations/standards actually shape real operations
+- System and network defense — physical security, application security, network hardening (services/protocols/segmentation), wireless/mobile hardening, embedded and specialized systems
+- Access control — models, account management, AAA (authentication, authorization, accounting)
+- ACLs — standard and extended, wildcard masking, named vs numbered syntax, using ACLs to mitigate attacks, IPv6 ACLs
+- Firewall tech — how firewalls fit into network design, and Zone Based Policy Firewalls specifically including configuring one
+- Cloud security — virtualization basics, the different domains of cloud security, infrastructure/app/data security, protecting VMs
+- Cryptography — confidentiality, obscuring data, integrity/authenticity, hashing, public key crypto, PKI trust system
+- Security monitoring — common protocols for monitoring, security tech generally, types of security data, end device logs, network logs
+- Evaluating alerts — where alerts come from and how to actually evaluate them, most SOC relevant part of the whole course
 
 ---
 
-## Module 4 — Access Control Lists
+## Why This One Mattered More Then Expected
 
-This module is where the course gets properly hands-on with configuration.
+Going in i figured this would mostly repeat stuff i already knew from the SOC labs. it didnt — the ACL and firewall modules especially gave me a way clearer picture of whats actually happening at the network layer to allow or block traffic, instead of just knowing "this alert means something bad happened." configuring ACLs and a zone based firewall connects directly to a lot of what shows up in SOC investigations honestly — ur often looking at whether a rule shouldve blocked something and didnt, or why traffic that shouldve been allowed got denied instead.
 
-- **Introduction to ACLs** — what they are and the general logic of permit/deny rules
-- **Wildcard masking** — the inverse-mask logic ACLs use instead of standard subnet masks, which took some real adjustment after getting used to normal subnet masks in Networking Basics
-- **Configuring ACLs** — the actual process of building rule sets
-- **Named standard IPv4 ACL syntax** — using names instead of numbers for readability
-- **Implementing ACLs** — applying them to the right interfaces in the right direction (inbound/outbound matters a lot here)
-- **Mitigating attacks with ACLs** — using ACLs defensively, not just as general traffic filters
-- **IPv6 ACLs** — same core logic, different addressing and slightly different syntax
+Crypto module was also more hands on then i expected — actual labs using OpenSSL to encrypt/decrypt stuff, looking at telnet vs ssh traffic in wireshark, digital signatures and certificate authority stores. step up from the conceptual crypto overview in Intro to Cybersecurity.
+
+---
+
+## Notes
+
+- [`notes.md`](./notes.md) — module by module notes
+- `labs.md` — coming once i work back through the packet tracer and standalone labs (this course has alot of them — ACL configs, firewall setup, openssl encryption labs, wireshark stuff, netflow, snort rules)
+- `reference.md` — coming after labs, condensed lookup sheet
+
+---
+
+*Completed as the follow up to Networking Basics, moving from how networks function into how they get attacked and defended.*- **IPv6 ACLs** — same core logic, different addressing and slightly different syntax
 
 Wildcard masking was genuinely the hardest single concept in this module — it's essentially the opposite logic of a subnet mask (0 means "must match," 1 means "don't care," which is backwards from what subnetting trained me to expect), so I had to consciously stop and think through it rather than pattern-matching off subnetting instincts.
 
