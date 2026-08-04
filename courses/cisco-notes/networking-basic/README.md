@@ -2,9 +2,9 @@
 
 ## About This Course
 
-This is Cisco's Networking Basics course through Skills for All (Networking Academy). Compared to the Intro to Cybersecurity course, this one's a lot more hands-on — it's built around setting up and understanding a small office/home office (SOHO) network rather than just covering security concepts at a high level.
+This is the first proper networking course i did, comes after Intro to Cybersecurity. Way more hands on then that one — 17 modules plus checkpoint exams along the way, built around actually understanding how a network moves data instead of just security concepts at a high level.
 
-I went into this one already having done Intro to Cybersecurity, so some of the security-adjacent stuff wasn't brand new, but the actual networking fundamentals — how devices talk to each other, how data actually moves, subnetting — that part was genuinely new territory for me and took a few passes to properly stick.
+Went into this already having done Intro to Cybersecurity so some of it wasnt totally new, but the actual networking fundamentals — how devices talk to eachother, subnetting, the whole OSI/TCP-IP thing — that part was genuinely new and took a few passes before it stuck properly.
 
 **Status:** Completed
 
@@ -12,36 +12,40 @@ I went into this one already having done Intro to Cybersecurity, so some of the 
 
 ## What It Covered
 
-- How networks are actually built — devices, cabling, how a home/small office network is structured
-- The OSI and TCP/IP models, and how they map onto each other (this one took me a while to get comfortable with)
-- IP addressing and subnetting, including CIDR notation
-- Common network devices — routers, switches, access points — what each one actually does versus what people assume they do
-- Basic Cisco IOS and the CLI — navigating and running basic commands on Cisco devices
-- Packet Tracer — Cisco's simulation tool, used for building and testing network setups without needing physical hardware
-- Basic network security concepts — traffic analysis and defending against common network-level threats, tied back into what I'd already covered in Intro to Cybersecurity
+17 modules total, roughly grouped like this:
+
+- Modules 1-4: basic networking concepts, wireless/mobile networks, and building an actual home network (first hands on stuff in the course)
+- Modules 5-7: communication protocols and standards, the OSI/TCP-IP models properly, network media types, the access layer and encapsulation
+- Modules 8-11: IPv4 addressing, network segmentation, IPv6, and DHCP
+- Modules 12-14: NAT, ARP, and routing between networks
+- Modules 15-17: TCP vs UDP, application layer stuff (DNS, web, FTP, telnet/SSH, email), and network troubleshooting commands
+
+Checkpoint exams show up after modules 4, 7, 11, and 14, then a final exam at the end covering everything.
 
 ---
 
-## What Actually Took Time To Understand
+## What Actually Took Time
 
-Subnetting was the one that slowed me down the most. Watching someone explain it in a video makes it look straightforward, but actually sitting down and working out a subnet mask myself the first few times, I kept second-guessing the math. It didn't fully click until I just did a bunch of practice problems on my own outside the course material.
+IPv6 addressing in module 10 took more re-reading then i expected. the hex characters look intimidating at first and the shorthand rules (dropping leading zeros, using :: for compressed zero blocks) didnt click right away.
 
-Packet Tracer was the opposite — I expected it to be confusing since it's a full simulation tool, but it turned out to be one of the more intuitive parts. Being able to actually build a small topology, plug in devices, and watch traffic behave (or fail to behave, when I misconfigured something) made the OSI model concepts land in a way that just reading about them didn't.
+Subnetting was also rough honestly. watching someone explain it makes it look easy, actually doing it myself the first few times i kept second guessing my own math. had to just do a bunch of extra practice problems outside the course before it stopped feeling shaky.
+
+Packet Tracer itself was easier then expected though — figured a whole simulation tool would be confusing but building small setups and watching traffic actually move (or fail to move when i messed up a config) made a lot of the earlier theory stuff make more sense in hindsight.
 
 ---
 
-## Why This Mattered For What I'm Building Toward
+## Why This Mattered Later
 
-This course is the reason I'm not starting from zero when I get into cloud networking (VPCs, subnets, security groups) or OT/ICS network segmentation later on — a lot of that is the same underlying logic, just applied in AWS or an industrial context instead of a home router. Having actually built and broken a small network in Packet Tracer first made those later concepts feel less abstract.
+This course is basically why i wasnt starting from zero when i got into cloud networking stuff (VPCs, subnets, security groups all use similar logic) or OT/ICS network segmentation later — same underlying ideas, just different context. building and breaking a small network in Packet Tracer first made those later concepts way less abstract when i got to them.
 
 ---
 
 ## Notes
 
-- [`notes.md`](./notes.md) — my study notes from working through the material
-- [`labs.md`](./labs.md) — Packet Tracer exercises and hands-on activities from the course
-- [`reference.md`](./reference.md) — quick-lookup sheet for OSI/TCP-IP layers, subnetting, and common commands
+- [`notes.md`](./notes.md) — module by module study notes
+- [`labs.md`](./labs.md) — the Packet Tracer labs, commands used, and which ones i redid properly with screenshots
+- [`reference.md`](./reference.md) — quick lookup sheet for commands and key concepts
 
 ---
 
-*Completed as part of building networking fundamentals before moving into cloud networking and OT/ICS coursework.*
+*Completed before moving into cloud networking and OT/ICS coursework.*
