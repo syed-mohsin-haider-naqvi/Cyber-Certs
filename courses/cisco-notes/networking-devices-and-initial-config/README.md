@@ -2,47 +2,47 @@
 
 ## About This Course
 
-This one sits between Networking Basics and Network Defense in terms of what it covers — it's less about attacks and defense, more about the actual mechanics of how networks are designed and how you configure a Cisco device from scratch. Binary and hex number systems, Ethernet switching at the frame level, the network and transport layers properly broken down, and then finally getting into the Cisco IOS command line and building a small network end to end.
+Third cisco course i did, comes after Networking Basics and around the same time as Network Defense. This one's less about attacks, more about the actual mechanics — how networks get designed and how you actually sit down and configure a cisco device from nothing. Binary and hex, ethernet at the frame level, network and transport layers, then finally the IOS command line and building a small network from scratch.
 
-Out of the three Cisco courses I've done so far, this is the one that felt most like "foundational plumbing" — the stuff that doesn't look exciting on its own but that everything else quietly depends on.
+Out of the three this is the one that felt least exciting going in and turned out to matter the most honestly. boring plumbing stuff. but everything else leans on it.
 
 **Status:** Completed
 
 ---
 
-## What It Covered
+## Whats In It
 
-- **Network design** — what makes a network reliable, and hierarchical network design principles
-- **Cloud and virtualization** — cloud services and virtualization at a conceptual level, earlier and lighter than the full Cloud Security module in Network Defense
-- **Number systems** — binary and hexadecimal, and why networking leans on both constantly (IP addressing, MAC addresses, subnetting math)
-- **Ethernet switching** — Ethernet itself, frame structure, MAC addresses, and how a switch actually builds and uses its MAC address table
-- **Network layer** — network layer characteristics, and the IPv4 and IPv6 packet structures specifically
-- **IPv4 address structure** — going deeper into IPv4 structure than Networking Basics did
-- **Address resolution** — ARP, revisited here in more depth
-- **IP addressing services** — DNS and DHCP as services, not just concepts
-- **Transport layer** — a full breakdown of TCP and UDP, port numbers, the TCP communication process, reliability and flow control, and UDP communication specifically
-- **The Cisco IOS command line** — actually navigating IOS, command structure, and viewing device information
-- **Building a small Cisco network** — basic switch configuration, initial router settings, securing devices, and configuring a default gateway, all together as one build
-- **ICMP** — ICMP messages, and using ping/traceroute for real testing
+- Network design — reliable networks, hierarchical design (core/distribution/access, the usual model)
+- Cloud and virtualization, but lighter then the full module in Network Defense — more "heres what it is" then "heres how to secure it"
+- Number systems. binary, hex. why networking cares about both (MAC addresses, IPv6, subnetting math)
+- Ethernet switching — frames, MAC addresses, how a switch actually builds it's MAC table instead of just flooding traffic everywhere
+- Network layer stuff — IPv4 and IPv6 packet structure specifically, side by side
+- IPv4 address structure in more depth then Networking Basics covered
+- ARP again but deeper, plus this is where u actually watch ARP traffic in wireshark instead of just reading about it
+- DNS and DHCP as actual running services
+- Transport layer — probably the most thorough TCP/UDP breakdown out of anything ive done so far. port numbers, the TCP handshake process, flow control, UDP's whole different approach
+- The cisco IOS command line itself — navigation, command structure, show commands
+- Building a small cisco network end to end — switch config, router config, securing the devices, default gateway
+- ICMP, ping, tracert — actual diagnostic use not just definitons
 
 ---
 
-## Why This One Was Different From The Other Two
+## What Actually Stuck
 
-Networking Basics taught me how networks generally work. Network Defense taught me how they get attacked and defended. This course is the one that actually taught me how to sit down at a Cisco device and configure it — Module 10 (IOS command line) and Module 11 (building a small network) are where things stopped being conceptual and became "type this, verify that, fix it if it's wrong."
+Module 3, the number systems one, mattered way more then i expected walking in. i'd already gotten through subnetting in Networking Basics but kinda just followed the steps without really getting why they worked. sitting down and doing binary/hex conversion properly here made the earlier subnetting stuff make sense retroactivley. annoying but useful, learning something out of order like that.
 
-The binary and hex module (3) mattered more than I expected going in. I'd been doing IP addressing math somewhat mechanically before this, and actually working through binary conversion properly made subnetting logic (from Networking Basics) make a lot more sense in hindsight — I understood the "why" behind the math I'd already been doing.
+Module 11 — building the small network — is probably the best module across all three cisco courses so far. First time it felt like i was doing something real instead of learning about something real. configure the switch, configure the router, lock it down, get the gateway right. small but its a complete thing start to finish.
 
-The transport layer module (9) was also the most thorough TCP/UDP coverage I've had — Networking Basics introduced TCP vs UDP at a surface level, this course goes into the actual communication process, not just the definition.
+Transport layer module was also more then i expected — Networking Basics gives u TCP vs UDP at a surface level, this one actually goes into the handshake and reliability mechanics and stuff.
 
 ---
 
 ## Notes
 
-- [`notes.md`](./notes.md) — module-by-module study notes
-- `labs.md` — coming once I work back through the Packet Tracer labs (IOS navigation, initial router/switch config, SSH setup, ARP in Wireshark, ICMP testing)
-- `reference.md` — coming as a condensed lookup sheet once labs are documented
+- [`notes.md`](./notes.md) — module notes
+- `labs.md` — coming once i redo the packet tracer labs properly (IOS navigation, router/switch config, SSH, ARP in wireshark, ICMP testing)
+- `reference.md` — after that, condensed lookup version
 
 ---
 
-*Completed alongside Network Defense, filling in the device-configuration and network-design fundamentals that both Networking Basics and Network Defense build on top of.*
+*Done around the same time as Network Defense — this one's more about the device/config fundementals both the other two courses kind of assume u already have.*
