@@ -44,7 +44,8 @@ Next step was actually checking whether `Ps1.hta` itself was known-bad, not just
 
 VirusTotal's own popular threat label came back as `trojan.valyria/powershell`, with threat categories listed as trojan and downloader. So this wasn't a borderline case — over half the engines checking it agreed it was malicious, and specifically flagged as something that downloads further payloads.
 
-![VirusTotal detection results for Ps1.hta hash](./screenshots/vt-detection.png)
+<img width="721" height="518" alt="image" src="https://github.com/user-attachments/assets/c31e1382-f076-4ed3-af49-e3ea8f3f7503" />
+
 
 ### Checking what actually happened on the host
 
@@ -54,6 +55,7 @@ With the file itself confirmed malicious, I went into the Endpoint Security sect
 05.03.2021 10:29 - C:/Windows/System32/mshta.exe C:/Users/roberto/Deskto...
 05.03.2021 10:30 - C:/Windows/System32/WindowsPowerShell/v1.0/powershell...
 ```
+<img width="721" height="127" alt="image" src="https://github.com/user-attachments/assets/eb745c4e-fd37-4275-aee5-5a96f1b4212c" />
 
 One second after mshta.exe ran the .hta file, a PowerShell process fired off. Reading through the actual PowerShell command, it was obfuscated — deliberately hard to read, not normal formatting.
 
@@ -89,8 +91,10 @@ Response: 404 Not Found
 
 **Result: connection attempt confirmed, but the actual payload file (Server.txt) wasn't there — 404.** So the callback happened, but whatever the attacker was trying to deliver at that point either wasn't hosted anymore or the URL had already changed by the time this ran.
 
-![Firewall log showing connection to malicious IP](./screenshots/firewall-connection.png)
-![Raw log confirming 404 response](./screenshots/raw-log-404.png)
+<img width="720" height="180" alt="image" src="https://github.com/user-attachments/assets/b1397a14-f282-444a-ae44-45ab5a46f0ce" />
+
+<img width="722" height="390" alt="image" src="https://github.com/user-attachments/assets/46000e5c-ae4d-4bbc-8cb1-fbc6ebe8103d" />
+
 
 ---
 
@@ -110,7 +114,7 @@ Answer: **User**. Checking Endpoint Security confirmed this ran under Roberto's 
 **Containment**
 Went to the EDR page and contained Roberto's machine — isolating it from the network to stop any further communication with the attacker's infrastructure or lateral movement while the investigation/remediation continues.
 
-![Host containment confirmation](./screenshots/host-contained.png)
+<img width="718" height="463" alt="image" src="https://github.com/user-attachments/assets/66e223c6-0b84-4ca7-b5c7-3c0845e7c9dc" />
 
 ---
 
@@ -121,6 +125,7 @@ Went to the EDR page and contained Roberto's machine — isolating it from the n
 Every piece of evidence lined up consistently — a low-reputation file executed through a legitimate-but-abusable binary, confirmed malicious by the majority of VirusTotal engines, followed almost immediately by obfuscated PowerShell reaching out to an external IP address. This wasn't an edge case or something that needed a judgment call between true/false positive — the chain from execution to callback was clear and consistent.
 
 Alert closed as True Positive, host contained, all playbook steps answered correctly for +5 points each.
+<img width="717" height="256" alt="image" src="https://github.com/user-attachments/assets/ab4b2792-16e9-475a-9e18-1c6c2c788a71" />
 
 ---
 
