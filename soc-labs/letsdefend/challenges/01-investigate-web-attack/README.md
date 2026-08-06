@@ -24,8 +24,8 @@ Didn't take long to spot it — the requests from that IP had a distinct user-ag
 **Answer: Nikto**
 
 Nikto's a pretty well known automated web scanner, and it doesn't really try to hide itself in the user-agent, which honestly made this first question the easiest one of the whole challenge.
+ <img width="679" height="373" alt="image" src="https://github.com/user-attachments/assets/4c8333b1-7304-4add-b028-0b4d24e30701" />
 
-![Nikto user-agent visible in log](./screenshots/q1-nikto-useragent.png)
 
 ---
 
@@ -37,7 +37,8 @@ That pattern — rapid-fire requests to a long list of guessed paths/filenames �
 
 **Answer: Directory brute force**
 
-![Rapid sequential requests showing brute force pattern](./screenshots/q2-directory-bruteforce.png)
+<img width="719" height="348" alt="image" src="https://github.com/user-attachments/assets/db52d48b-63ae-4173-916d-2bf70d5e1416" />
+
 
 ---
 
@@ -49,7 +50,6 @@ Once I saw it was specifically POST requests repeatedly targeting a login page, 
 
 **Answer: Brute force (login/credential brute force)**
 
-![Repeated POST requests to login.php](./screenshots/q3-login-bruteforce.png)
 
 ---
 
@@ -61,7 +61,8 @@ Right after the repeated login attempts stopped, the log showed a request to `/b
 
 **Answer: Yes**
 
-![Successful redirect to portal.php after brute force attempts](./screenshots/q4-successful-login.png)
+<img width="722" height="236" alt="image" src="https://github.com/user-attachments/assets/5cd67125-5989-4dec-bd8c-daf3494af865" />
+
 
 ---
 
@@ -81,7 +82,9 @@ URL-decoded, that's `message="";system('whoami')` — the attacker was injecting
 
 I want to be honest that I had to look up what a payload like this actually does before I was confident calling it code injection specifically rather then just "some kind of injection attack" — the `system()` function wrapped inside the URL parameter wasn't something I immediately recognized on sight.
 
-![Code injection payload in message parameter](./screenshots/q5-code-injection.png)
+<img width="723" height="30" alt="image" src="https://github.com/user-attachments/assets/c56bbd01-df35-4f16-a3ed-4fe32b5d5ca5" />
+<img width="723" height="234" alt="image" src="https://github.com/user-attachments/assets/dfeb1aa3-d716-4c75-87bb-0c885dbbfeba" />
+
 
 ---
 
@@ -94,6 +97,7 @@ GET /bWAPP/phpi.php?message=%22%22;%20system(%27whoami%27)
 ```
 
 **Answer: `whoami`**
+<img width="721" height="30" alt="image" src="https://github.com/user-attachments/assets/ff27eb19-0e63-4c71-b1a8-b8c273aee8de" />
 
 ---
 
@@ -112,8 +116,9 @@ I tried to decode/read through it and honestly wasn't 100% sure I was reading th
 **Answer: `%27net%20user%20hacker%20asd123!!%20/add%27`**
 
 Decoded, that's a Windows `net user` command creating a new local account named `hacker` with the password `Asd123!!` — a classic way to plant a persistent backdoor account on a compromised machine so the attacker can log back in later through a completely legitimate-looking user account instead of relying on the original exploit still being open.
+<img width="709" height="50" alt="image" src="https://github.com/user-attachments/assets/903a705a-80a2-4316-8294-3970949ad6ca" />
 
-![Persistence payload creating backdoor user account](./screenshots/q7-persistence-payload.png)
+
 
 ---
 
