@@ -38,7 +38,7 @@ That narrowed it to two specific events. One showed `rundll32.exe` loading `Dism
 
 **Answer: `Dism.exe`**
 
-![Sysmon Event ID 7 showing DismCore.dll loaded by both Dism.exe and rundll32.exe](./screenshots/dllhijack-eventid7.png)
+<img width="715" height="487" alt="image" src="https://github.com/user-attachments/assets/2a221239-9c3a-4556-b1c0-1b5d45954469" />
 
 ---
 
@@ -60,7 +60,7 @@ That returned a single clean hit — `Calculator.exe` loading `clrjit.dll`. A ca
 
 **Answer: `Calculator.exe`**
 
-![Event showing Calculator.exe loading clrjit.dll](./screenshots/powershellexec-clrjit.png)
+<img width="720" height="169" alt="image" src="https://github.com/user-attachments/assets/fc01283d-26e0-4c8b-8928-b734dca28ed2" />
 
 **Follow-up question: which process injected into the process running unmanaged PowerShell?**
 
@@ -74,7 +74,7 @@ The message field laid it out directly — `SourceImage: rundll32.exe`, `TargetI
 
 **Answer: `rundll32.exe`**
 
-![CreateRemoteThread event showing rundll32.exe injecting into Calculator.exe](./screenshots/powershellexec-eventid8-injection.png)
+<img width="675" height="186" alt="image" src="https://github.com/user-attachments/assets/fc780968-1d6b-4d6e-8d06-a742d475fc4f" />
 
 ---
 
@@ -88,7 +88,7 @@ Looking through the ID 10 events in this folder, `ProcessHacker.exe` showed up a
 
 **Answer: `ProcessHacker.exe`**
 
-![Sysmon Event ID 10 showing ProcessHacker.exe accessing lsass.exe](./screenshots/dump-eventid10.png)
+<img width="719" height="370" alt="image" src="https://github.com/user-attachments/assets/8e5da9e6-0f88-4159-a3d4-3eab88c7a3c6" />
 
 **Follow-up question: did an ill-intended login occur after the dump?**
 
@@ -138,7 +138,7 @@ WerFault is the Windows Error Reporting process — it should never be the paren
 
 **Answer: `WerFault.exe`**
 
-![Formatted table showing the WerFault.exe -> cmd.exe anomalous parent-child relationship](./screenshots/strangeppid-table.png)
+<img width="648" height="171" alt="image" src="https://github.com/user-attachments/assets/e69dcc01-2566-4426-b5de-25d47393d169" />
 
 ---
 
