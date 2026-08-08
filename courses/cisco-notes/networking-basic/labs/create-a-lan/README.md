@@ -33,11 +33,11 @@ Printer -----
 
 First step was just physically powering everything on — clicked into each device's Physical tab and hit the power switch, checked for the green light confirming it was actually on.
 
-![Devices powered on, physical view](./screenshots/01-power-on.png)
+<img width="368" height="366" alt="image" src="https://github.com/user-attachments/assets/52762027-83f1-47cd-ad8c-19b7dfe7f8b3" />
 
 Then wired everything per the connections table — Office Router to the ISP cloud on G0/0, Office Router to the Switch on G0/1, and the two PCs plus the printer into the switch's FastEthernet ports (F0/1, F0/2, F0/24 respectively), all using copper straight-through cables. After a short delay, all the link lights came up green, confirming the physical connections were good before moving on to addressing.
 
-![Completed topology with all devices connected](./screenshots/02-topology-connected.png)
+<img width="502" height="441" alt="image" src="https://github.com/user-attachments/assets/41e95234-5e11-4aaf-b5a3-1741f920e3f0" />
 
 ---
 
@@ -47,7 +47,7 @@ For the Admin and Manager PCs, the lab calls for DHCP — the Office Router is m
 
 For the printer, manual static addressing made sense per the addressing table (192.168.1.100 / 255.255.255.0) — printers and other shared devices generally get static addresses specifically because other devices are configured to reach them at a fixed IP, so letting that address drift via DHCP would break things down the line.
 
-![Printer static configuration](./screenshots/03-printer-static-config.png)
+<img width="374" height="377" alt="image" src="https://github.com/user-attachments/assets/40e4876c-c760-47a8-948a-448d2171fe5b" />
 
 ### Something worth flagging honestly here
 
@@ -96,8 +96,8 @@ FastEthernet0 Connection:(default port)
 
 Then ran `ipconfig /all` for the fuller picture — added the physical (MAC) address of the NIC on top of what basic `ipconfig` shows, along with the DHCP and DNS server addresses. That extra detail is useful specifically when troubleshooting deeper issues, like confirming whether a device actually pulled its address from the expected DHCP server or checking hardware-level identification via the MAC address.
 
-![ipconfig output on Admin PC](./screenshots/04-admin-pc-ipconfig.png)
-![ipconfig output on Manager PC](./screenshots/05-manager-pc-ipconfig.png)
+<img width="735" height="549" alt="image" src="https://github.com/user-attachments/assets/20089692-b2b2-4413-acf8-9f214bce7aa0" />
+<img width="366" height="377" alt="image" src="https://github.com/user-attachments/assets/c1565f89-e064-46b6-9b80-45c8ca828312" />
 
 Running the same command on the Manager PC actually surfaced the addressing mismatch mentioned earlier — its output also showed `192.169.1.2` rather than the expected `192.168.1.x`, confirming the typo wasn't a one-off but was present on both PCs' configuration.
 
@@ -131,62 +131,5 @@ The static-vs-DHCP mismatch on the PCs was the main thing worth noting — going
 - Cisco Packet Tracer (topology build, device configuration, command prompt simulation)
 ---
 
-## 14.3.4 — Create a LAN
 
-**Module:** 14 — Routing Between Networks
 
-Built a small LAN from scratch. This was the first lab that felt like actually constructing something rather than configuring one setting on an existing setup — closer to what I imagine real network setup work looks like.
-
----
-
-## 16.1.5 — The Client Interaction
-
-**Module:** 16 — Application Layer Services
-
-Basic client-server interaction exercise, laying the groundwork before the more specific application-layer labs that follow.
-
----
-
-## 16.4.3 — Observe Web Requests
-
-**Module:** 16 — Application Layer Services
-
-Watched an actual web request happen — client sends the request, server responds. Ties directly back into the 8.1.3 lab but goes further into what's actually happening at the application layer during that exchange.
-
----
-
-## 16.5.3 — Use FTP Services
-
-**Module:** 16 — Application Layer Services
-
-Set up and used FTP to transfer files between a client and server. First time actually using a protocol other than plain web traffic in the labs.
-
----
-
-## 16.6.4 — Use Telnet and SSH
-
-**Module:** 16 — Application Layer Services
-
-Compared Telnet and SSH directly. This lab is where the difference between them stopped being abstract — Telnet sends everything in plaintext, SSH doesn't, and you can genuinely see why that distinction actually matters once you're the one connecting to a device.
-
----
-
-## 17.1.3 — Use the ipconfig Command
-
-**Module:** 17 — Network Testing Utilities
-
-Basic but genuinely useful — pulling actual configuration details off a device using ipconfig. Simple command, but it's one I've already gone back to using outside the course just to check things.
-
----
-
-## 17.1.6 — Use the ping Command
-
-**Module:** 17 — Network Testing Utilities
-
-Used ping to test connectivity between devices. Straightforward lab, but a good closing point for the course — basically the simplest troubleshooting tool, after 17 modules building up everything that could go wrong for it to be diagnosing.
-
----
-
-## Overall
-
-Doing these roughly in course order made the later ones easier — by the time I got to the Module 16 application layer labs, configuring things in Packet Tracer felt normal instead of intimidating, which wasn't the case back at 4.4.4. The DHCP and NAT labs (11.2.3, 12.2.2) were the two that took the concepts from the notes and actually made them feel real rather than theoretical.
