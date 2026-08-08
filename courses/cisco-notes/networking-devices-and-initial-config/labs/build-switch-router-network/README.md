@@ -30,11 +30,11 @@ PCA --- S1 --- R1 --- PCB
 
 Wired everything with copper straight-through cables per the instructions — R1's G0/0/1 to a port on S1, PCA to a port on S1, and PCB directly to R1's G0/0/0. That put PCA and S1 on one side of the router and PCB on the other, which matches the addressing table having PCA/S1 on the `192.168.1.0/24` network and PCB alone on `192.168.0.0/24`.
 
-![Physical topology connected](./screenshots/01-topology.png)
 
 Configured static IPv4 addressing on both PCs directly from the addressing table — PCA got 192.168.1.3/24 with gateway 192.168.1.1, PCB got 192.168.0.3/24 with gateway 192.168.0.1.
 
-![PCA IP configuration](./screenshots/02-pca-config.png)
+<img width="722" height="331" alt="image" src="https://github.com/user-attachments/assets/bb8d761a-6942-454e-bc54-d89bfb397d0a" />
+<img width="365" height="439" alt="image" src="https://github.com/user-attachments/assets/8f72e339-b279-4316-b3a9-04548d6e228c" />
 
 ---
 
@@ -61,7 +61,7 @@ The router's interfaces — which are the default gateways both PCs rely on to r
 
 This step was actually useful precisely because it failed — it confirmed the physical wiring and PC-level addressing were fine on their own, and isolated the actual problem specifically to the router not being configured, rather than some other part of the setup being wrong.
 
-![Failed ping before router configuration](./screenshots/03-ping-fail.png)
+<img width="723" height="240" alt="image" src="https://github.com/user-attachments/assets/377c5754-4a77-4712-85c0-371f7c1f407b" />
 
 ---
 
@@ -120,7 +120,7 @@ Building configuration...
 
 Both interfaces came up cleanly once addressed and activated with `no shutdown` — the `%LINK-5-CHANGED` and `%LINEPROTO-5-UPDOWN` messages confirming each interface transitioned to an up state. Saved the config with `copy running-config startup-config` so it would persist.
 
-![R1 configuration in progress](./screenshots/04-r1-config.png)
+<img width="365" height="393" alt="image" src="https://github.com/user-attachments/assets/978e097e-8e7e-4242-ab67-faf67204b8da" />
 
 ---
 
@@ -145,7 +145,7 @@ Ping statistics for 192.168.0.3:
 
 Now that R1 was routing between the two networks, the ping traffic had a path to actually follow — but the very first ping in the sequence still timed out. That first failure is expected and normal here rather than a real problem: it's ARP resolving the destination's MAC address for the first time before the actual ICMP traffic can flow, which eats up the time budget on that initial packet. Every ping after that succeeded cleanly once ARP had already resolved. The switch itself needed no manual configuration to allow this — its default settings automatically enable interfaces as soon as a device gets connected to them.
 
-![Successful ping with initial timeout, then replies](./screenshots/05-ping-success.png)
+<img width="663" height="225" alt="image" src="https://github.com/user-attachments/assets/6c5828c2-8218-41fa-bbc4-b93e54e954d2" />
 
 ---
 
@@ -183,7 +183,7 @@ Building configuration...
 
 Went through this configuration cleanly the second time around — having already made the `enable login` and `secret password-encryption` mistakes on R1 meant I used the correct `login` and `service password-encryption` syntax directly here without repeating either error.
 
-![S1 configuration](./screenshots/06-s1-config.png)
+<img width="342" height="364" alt="image" src="https://github.com/user-attachments/assets/51ce4a6b-1452-4f3b-9c9a-7c1169c48c9a" />
 
 ---
 
@@ -220,8 +220,6 @@ C:\>ssh -l SSHuser 192.168.1.1
 Entered `cisco` when prompted for the password.
 
 **What message displayed?** The configured banner MOTD — "Authorized Access Only!" — appeared, then dropped into R1's prompt. Getting the banner to display on login was actually a useful confirmation in itself, beyond just successfully connecting — it meant the SSH session was genuinely hitting R1's actual CLI, not some cached or partial connection, since the banner is set to display specifically on real login.
-
-![Successful SSH connection showing banner](./screenshots/07-ssh-success.png)
 
 ---
 
