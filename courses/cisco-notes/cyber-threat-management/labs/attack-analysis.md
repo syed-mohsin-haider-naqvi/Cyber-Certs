@@ -32,6 +32,9 @@ Searched each MD5 hash on ANY.RUN's Public Submissions page.
 `![hash not found example](hash-not-found-example.png)` — this one shows what the "no analyses found" result actually looks like, for the hashes that had expired.
 
 I actually found two different versions of the researched table online with different filenames for the same hashes. Went with the one above because it's more specific (real-looking filenames instead of generic ones like `test.exe`/`j.exe`/`p.exe`) and because it lines up with the two hashes I verified myself — both tables agreed wireframe.exe was malicious, but only this one also correctly called gh2st.exe malicious instead of mislabeling it.
+<img width="718" height="507" alt="image" src="https://github.com/user-attachments/assets/0ddca488-4746-44ad-b465-f71bfa410b6e" />
+<img width="720" height="507" alt="image" src="https://github.com/user-attachments/assets/8fc11d3a-a87d-4107-8958-33fa97f5ee57" />
+<img width="719" height="510" alt="image" src="https://github.com/user-attachments/assets/6b2bb1d1-e3ce-4eb8-a3a2-c1c0b8b215be" />
 
 ### Part 2 — Investigating wireframe.exe (`2fd03624e271ec70349ce56fb30f563b`)
 
@@ -42,6 +45,7 @@ Everything in this section is from my own ANY.RUN run, except the ATT&CK matrix 
 `![wireframe process tree](wireframe-process-tree.png)`
 
 **SHA256 (from text report):** `9C83A89EA0E56D5AF9AA37D2DABED20B2412DB8C9694A13128EA173A73557487`
+<img width="705" height="426" alt="image" src="https://github.com/user-attachments/assets/617891b5-2232-4589-98ae-a33e784b031a" />
 
 **Processes graph:**
 - Process executed first: `wireframe.exe`
@@ -50,6 +54,7 @@ Everything in this section is from my own ANY.RUN run, except the ATT&CK matrix 
 
 `![wireframe processes graph](wireframe-processes-graph.png)`
 `![wireframe danger box](wireframe-danger-box.png)`
+<img width="717" height="268" alt="image" src="https://github.com/user-attachments/assets/36c53db9-d3d5-4b24-b443-a1a2901ae4b7" />
 
 **ATT&CK Matrix** — *couldn't access this directly, ANY.RUN gates it behind a business email login. Found this through online research instead of pulling it from the tool myself:*
 - 4 Tactics, 5 Techniques, 16 Events
@@ -65,8 +70,10 @@ Also from my own ANY.RUN run, except the ATT&CK matrix.
 `![gh2st process tree](gh2st-process-tree.png)`
 
 **SHA256 (from text report):** `88DD2037D0C43ABACEBAD866DF3F8CCD2EE7D64B01405AA6756A3A1C2FAC28FA`
+<img width="738" height="433" alt="image" src="https://github.com/user-attachments/assets/cf062e24-a78c-4f43-8d81-a5c03643956e" />
 
 **Processes graph:** `gh2st.exe` → `conhost.exe`, flagged RedLine on the malicious branch.
+<img width="703" height="317" alt="image" src="https://github.com/user-attachments/assets/6dc6f0f8-73db-44cc-8840-d53f84358c83" />
 
 `![gh2st processes graph](gh2st-processes-graph.png)`
 
