@@ -38,13 +38,15 @@ Before touching R3's firewall configuration at all, the lab has you confirm the 
 
 **ICMP test:** Pinged from PC-A to PC-C (192.168.3.3) — successful, 0% loss.
 
-![Successful ping from PC-A to PC-C before firewall config](./screenshots/01-preconfig-ping.png)
+<img width="359" height="470" alt="image" src="https://github.com/user-attachments/assets/3f85c678-2360-49fa-ab48-4361b9cbe148" />
 
 **HTTP test:** Opened a web browser from PC-C to PC-A's address (192.168.1.3) — page loaded successfully, confirming HTTP reachability in both directions works pre-firewall.
 
+<img width="363" height="507" alt="image" src="https://github.com/user-attachments/assets/92de856e-f7c2-4590-9547-05ca37468e34" />
+
 **SSH test:** Established SSH sessions to R2's S0/0/1 interface (10.2.2.2) from both PCs. PC-C's first couple of attempts actually failed with "Login invalid" — worth noting since it wasn't a smooth first try — before succeeding on a retry with the correct credentials. PC-A connected cleanly on the first attempt.
 
-![SSH session attempts from PC-C showing initial login failures then success, and clean success from PC-A](./screenshots/02-ssh-both-sides.png)
+<img width="360" height="480" alt="image" src="https://github.com/user-attachments/assets/95d80181-cae3-41cf-87f5-ee2ce8308fc0" />
 
 All three protocols confirmed working normally in both directions before any firewall rules existed — this baseline matters because it means anything that stops working after configuring the ZPF is actually the firewall doing its job, not some unrelated network problem.
 
@@ -102,7 +104,7 @@ R3(config)#zone security OUT-ZONE
 R3(config-sec-zone)#exit
 ```
 
-![License acceptance and zone creation commands](./screenshots/03-license-zones.png)
+<img width="663" height="346" alt="image" src="https://github.com/user-attachments/assets/0a02a333-0d5c-4030-967d-f14ecc527133" />
 
 ---
 
@@ -119,7 +121,7 @@ R3(config-cmap)#exit
 
 The ACL permits any traffic sourced from the `192.168.3.0/24` network (R3's internal LAN) heading to any destination — this is intentionally broad since the point isn't restricting *what* internal traffic can do, just identifying *which* traffic counts as "internal" for the firewall to apply inspection rules to.
 
-![ACL and class-map configuration](./screenshots/04-acl-classmap.png)
+<img width="717" height="400" alt="image" src="https://github.com/user-attachments/assets/e85716e8-7f49-4288-87aa-fe760de04cca" />
 
 ---
 
@@ -145,7 +147,7 @@ R3(config-sec-zone-pair)#service-policy type inspect IN-2-OUT-PMAP
 
 This is the core logic of a ZPF — the policy only applies in one direction (internal → external here). Traffic initiated from internal hosts gets inspected and, because it's inspected, return traffic for those same sessions is automatically permitted back in. Traffic with no matching zone-pair policy in the other direction (external → internal) has no rule allowing it, so it gets dropped by default — which is exactly the intended behavior described in the scenario.
 
-![Policy map and zone-pair configuration](./screenshots/05-policymap-zonepair.png)
+<img width="718" height="351" alt="image" src="https://github.com/user-attachments/assets/be146a13-9feb-41ef-9b9a-8c6f90eff01a" />
 
 ---
 
@@ -164,7 +166,7 @@ R3(config-if)# exit
 
 Packet Tracer confirmed successful assignment and successful firewall policy configuration overall at this point.
 
-![Interface zone-member assignment, with Packet Tracer confirmation](./screenshots/06-interface-assignment.png)
+<img width="724" height="331" alt="image" src="https://github.com/user-attachments/assets/5a1f911b-28d8-417e-a322-c691d7c0e95a" />
 
 ---
 
