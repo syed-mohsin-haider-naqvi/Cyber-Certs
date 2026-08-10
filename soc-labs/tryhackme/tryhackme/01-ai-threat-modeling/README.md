@@ -20,7 +20,7 @@ Worked through 7 scenario-based questions, each built around a piece of an AI sy
 | Malicious data inserted into the training dataset to bias outputs | What type of attack is this? | **Data Poisoning** | Textbook definition — corrupting training data to skew the model |
 | Attackers create thousands of fake accounts to manipulate rankings | Risk level? | **High** | High likelihood (easy to automate) + high impact (directly manipulates output) = critical risk |
 
-`![assessment progress](ai-threat-assessment.png)`
+<img width="637" height="903" alt="image" src="https://github.com/user-attachments/assets/b34f734f-319c-4828-9db8-62aef1c06d4e" />
 
 Got all 7 right → earned the first flag.
 
@@ -47,7 +47,7 @@ Placed shields on: **Database** and **Retrieval**.
 - *Retrieval* — if poisoned data gets stored and later retrieved, it keeps influencing model outputs even after deployment.
 Result: **Attack Prevented.**
 
-`![attack simulation shields placed](ai-threat-shields.png)`
+<img width="638" height="896" alt="image" src="https://github.com/user-attachments/assets/936f6be8-4c3b-4306-af98-01dea0f6ee06" />
 
 All three simulations passed → earned the second flag.
 
