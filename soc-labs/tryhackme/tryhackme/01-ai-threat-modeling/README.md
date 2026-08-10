@@ -1,8 +1,5 @@
 # AI Threat Modeling — TryHackMe
 
-> **repo path suggestion:** `soc-labs/tryhackme/03-ai-threat-modeling/README.md`
-> *(placeholder numbering — swap the `03-` prefix and folder slug once you confirm the exact room title/URL, since I don't have that from the PDF. Also double check TryHackMe's policy on posting flags publicly before this goes live — some rooms ask you not to.)*
-
 ## Scenario
 
 TryHackMe room covering AI/LLM security — how AI systems become an attack surface and how to apply structured threat modeling to them. The room builds on two earlier modules covering AI/ML fundamentals and how they translate into real-world security vulnerabilities, then tests that knowledge two ways: a scored assessment (component identification, vulnerability classification, control selection) and an interactive attack simulation where you defend a sample AI system architecture in real time.
