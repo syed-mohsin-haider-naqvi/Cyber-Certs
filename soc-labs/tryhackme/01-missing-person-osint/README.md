@@ -1,7 +1,5 @@
 # Missing Person — TryHackMe (OSINT)
 
-> **repo path suggestion:** `soc-labs/tryhackme/04-missing-person-osint/README.md`
-> *(placeholder numbering — line it up with wherever tempest/greenholt-phish/ai-threat-modeling land)*
 
 ## Scenario
 
@@ -9,33 +7,38 @@
 
 Classic OSINT room — you're only given a handful of photos he shared and have to reconstruct his movements using nothing but publicly available info. Covers image metadata, reverse image search, geolocation, social media profiling, and business record lookup.
 
+<img width="649" height="366" alt="image" src="https://github.com/user-attachments/assets/fbf8a8c2-0288-4e62-ad10-05328ecfce24" />
+
+<img width="645" height="363" alt="image" src="https://github.com/user-attachments/assets/61ba7dcb-b676-4290-9bb3-3a6ab5d35470" />
+
 ## Investigation
 
 **Photo 1 — what circuit is this?**
 Reverse image searched the racetrack photo. Google's AI overview pulled it straight up: the Pertamina Mandalika International Street Circuit in Kuta Mandalika, Lombok, Indonesia — a 4.31km FIA Grade 2/FIM Grade A circuit that hosts the MotoGP Indonesian Grand Prix.
 
-`![circuit reverse image search](circuit-reverse-image-search.png)`
+<img width="640" height="336" alt="image" src="https://github.com/user-attachments/assets/e669897d-0574-416b-a080-6c9612db09db" />
 
 **When did the event take place?**
 Pulled the EXIF data off the image — Create Date and Date Time Original both showed `2025:10:05`. That's the date the photo itself was taken, not necessarily the whole event, so I cross-referenced it against the official MotoGP schedule page for Indonesia and found the full event window: **03-05/10/2025**.
 
-`![exif event date](exif-event-dates.png)`
-`![motogp schedule page](moto-gp-schedule.png)`
+<img width="640" height="149" alt="image" src="https://github.com/user-attachments/assets/c5fc8ebd-cb8e-4a63-b553-b50a165b3ed3" />
+
+<img width="643" height="269" alt="image" src="https://github.com/user-attachments/assets/d5809f5a-8997-4e04-89d4-5149d3e33299" />
 
 **What's the restaurant with the Mexican food?**
 Reverse image searched the restaurant photo (the one with the colorful papel picado banners hanging from the ceiling). Came back as Cantina Mexicana Kuta Lombok — matched not just the search result but the actual table numbers visible in the original photo too.
 
-`![restaurant reverse image search](restaurant-reverse-image-search.png)`
+<img width="645" height="440" alt="image" src="https://github.com/user-attachments/assets/0de28a18-bcb8-477e-8b6c-ae0193dac0ea" />
 
 **What time was the restaurant photo taken?**
 Back to EXIF — Date Time Original this time gave a full timestamp: `2025-10-05T14:55:30.000Z`, which converts to **19:55:30** local time.
 
-`![exif photo time](exif-photo-time.png)`
+<img width="588" height="177" alt="image" src="https://github.com/user-attachments/assets/4b4d3648-e143-4bef-9026-d5bcf7a37f76" />
 
 **Full address of the bar (from the last message he sent about the after-party)?**
 No photo to work off here, just a text description. Searched for MotoGP after-parties happening in Lombok around those dates and got a handful of bar results. One of them — Surfers' Bar — matched the visual style/vibe described. Address came back as: Jl. Raya Kuta, Kuta, Kec. Pujut, Kabupaten Lombok Tengah, Nusa Tenggara Barat.
 
-`![bar search results](bar-search-results.png)`
+<img width="624" height="445" alt="image" src="https://github.com/user-attachments/assets/cd4afcb1-de09-406d-a86c-5c26cd0e2b37" />
 
 **The DJ's stage name?**
 Found his Instagram through the bar's social presence — not posting that screenshot here out of privacy/respect, since he's a real person and not actually part of the "case." Stage name: **Bong Leleh**.
@@ -43,12 +46,12 @@ Found his Instagram through the bar's social presence — not posting that scree
 **What cave does he take tourists to?**
 This one took a while — no direct name given anywhere, so I pulled up Google Maps and just scanned the area around the bar for anything tagged as a cave. Found Gua Sumur nearby and cross-checked it against the DJ's other social accounts to confirm the connection.
 
-`![cave google maps search](cave-google-maps.png)`
+<img width="642" height="322" alt="image" src="https://github.com/user-attachments/assets/8c0819cc-cfb4-493a-99fe-545421713dcb" />
 
 **What number did the DJ list for his tour business?**
 Searched his name directly and a Facebook page for "Gua Sumur Lombok" came up with a listed contact number: +62 853-3313-7345. Stripped the country code per the question's format requirement — final answer: **085333137345**.
 
-`![dj tour business facebook page](dj-tour-business-facebook.png)`
+<img width="646" height="454" alt="image" src="https://github.com/user-attachments/assets/9f4626bd-2467-4c68-916a-6de863753529" />
 
 ## Findings / Verdict
 
