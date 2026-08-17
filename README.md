@@ -53,7 +53,7 @@ Course completions show I studied something. These writeups are meant to show I 
 
 ---
 
-## 🏭 OT/ICS Security
+## 🏭 OT/ICS Security (future)
 
 Notes and labs on industrial control systems security — a newer area I'm building into alongside cloud, tied directly to my ICS coursework.
 
@@ -68,7 +68,7 @@ This section is early. Expect it to fill in over the coming months.
 
 ---
 
-## 🧪 Homelab Project
+## 🧪 Homelab Project (future)
 
 My end-to-end SIEM build — the larger project meant to tie SOC concepts, detection logic, and monitoring together in one place rather than isolated lab rooms.
 
@@ -93,34 +93,6 @@ Most of what I've learned so far has been self-funded and self-directed, which m
 Working in SOC, cloud security, or OT/ICS? Want to compare notes or point out something I got wrong in a writeup? Genuinely welcome that.
 
 📌 [LinkedIn](https://www.linkedin.com/in/syed-mohsin-haider-naqvi-33248838b)
-
----
-
-*Last updated: [fill in whenever you actually touch the repo]*  - Write alerts for failed logins, privilege escalation, lateral movement  
-  - Test rules against both benign and malicious logs  
-  - Adjust to reduce false positives  
-- **Outcome:**  
-  - Reliable alerting rules  
-  - Documentation of why each rule works and how it's tuned
-
----
-
-## 📊 Key Outcomes
-
-- Built multiple, practical detection rules that mirror real SOC scenarios.  
-- Simulated a variety of cyber-attack behaviors.  
-- Created dashboards to monitor alert timelines and severity.  
-- Developed a runbook that can guide incident response in real scenarios.  
-- Deepened my understanding of how logs, alerts, and playbooks work together to defend infrastructure.
-
----
-
-## 🧠 Lessons Learned
-
-- Raw logs are powerful—but organizing and parsing them effectively is key.  
-- It’s important to **fine-tune alerts**: too many false positives, and real threats get lost; too strict, and you miss them.  
-- A well-documented **runbook or playbook** is essential for consistent, repeatable incident response.  
-- Practical labs are invaluable: applying theory in a controlled environment makes everything click.
 
 ---
 
